@@ -12,12 +12,20 @@ public class PickUpScript : MonoBehaviour {
 
 	[SerializeField]
 	private float maxRandomAngularVelocity = 0.25f;
+
+	[SerializeField]
+	[Range(0.5f, 10.0f)]
+	private float spring = 2f;
+	[SerializeField]
+	[Range(0.01f, 0.16f)]
+	private float drag = 0.06f;
 	#endregion
 
 	#region Variable Declarations
 	GameObject itemPickedUp = null;
 	Rigidbody itemRigidBody = null;
 	Vector3 targetPos = Vector3.zero;
+	private Vector3 velocity;
 	#endregion
 
 	#region Private Functions
@@ -39,32 +47,38 @@ public class PickUpScript : MonoBehaviour {
 					//Make it collide again.
 					itemPickedUp.GetComponent<BoxCollider>().enabled = true;
 
-					//Stop it spinning
-					itemRigidBody.angularVelocity = Vector3.zero;
+					//Unset item parameters and re-enable gravity
 					itemPickedUp = null;
+					itemRigidBody.useGravity = true;
+					itemRigidBody.velocity = velocity * 0.5f;
 					itemRigidBody = null;
 				}
 			}
 		}
 
+	}
+
+    private void FixedUpdate()
+    {
 		//If there's an item that's picked up.
-		if(itemPickedUp != null) {
-			//Make sure the rigidbody doesn't move.
-			itemRigidBody.velocity = Vector3.zero;
+		if (itemPickedUp != null)
+		{
+			//Move item towards where it should be.
+			velocity += (targetPos - itemPickedUp.transform.position) * spring;
+			velocity -= velocity * drag;
+			itemRigidBody.position += velocity * Time.deltaTime;
 
 			//Get where it shoulds be.
 			targetPos = GetPointedPos();
 
-			//Put it where it should be.
-			itemPickedUp.transform.position = targetPos;
 		}
 	}
 
-	/// <summary>
-	/// Checks if there's an item that the user wants to picked up and if yes it returns true and picks it up.
-	/// </summary>
-	/// <returns></returns>
-	private bool AttemptItemPickupRaycast() {
+    /// <summary>
+    /// Checks if there's an item that the user wants to picked up and if yes it returns true and picks it up.
+    /// </summary>
+    /// <returns></returns>
+    private bool AttemptItemPickupRaycast() {
 		//Set Up Ray.
 		RaycastHit hit;
 		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -76,9 +90,10 @@ public class PickUpScript : MonoBehaviour {
 
 			//Pick Up the object.
 			if(objectHit.gameObject.tag == "Cube") {
-				//Get the item gameobject and rigidbody.
+				//Get the item gameobject and rigidbody. Disable gravity.
 				itemPickedUp = objectHit.gameObject;
 				itemRigidBody = itemPickedUp.GetComponent<Rigidbody>();
+				itemRigidBody.useGravity = false;
 
 				//Give the item a random spin.
 				itemRigidBody.angularVelocity = new Vector3(Random.Range(0.0f, maxRandomAngularVelocity), Random.Range(0.0f, maxRandomAngularVelocity), Random.Range(0.0f, maxRandomAngularVelocity));
