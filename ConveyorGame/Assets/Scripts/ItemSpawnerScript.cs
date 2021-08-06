@@ -48,12 +48,9 @@ public class ItemSpawnerScript : MonoBehaviour {
 	}
 
 	private void UpdateSpawnPos() {
-		int randomNumber = Random.Range(0, int.MaxValue);
-		if ((randomNumber % 2) == 0) {
-			spawnPos = posOne;
-		} else {
-			spawnPos = posTwo;
-		}
+		float randomNumber = Random.Range(0, 1.0f);
+		spawnPos.position = Vector3.Lerp(posOne.position, posTwo.position, randomNumber);
+		spawnPos.eulerAngles = new Vector3(Random.Range(0, 360.0f), Random.Range(0, 360.0f), Random.Range(0, 360.0f));
 	}
 
 	private void SpawnRandomItem() {
