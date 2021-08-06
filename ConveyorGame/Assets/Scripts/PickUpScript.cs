@@ -76,30 +76,33 @@ public class PickUpScript : MonoBehaviour {
 
     /// <summary>
     /// Checks if there's an item that the user wants to picked up and if yes it returns true and picks it up.
+	/// If an item is already picked up return false.
     /// </summary>
     /// <returns></returns>
     private bool AttemptItemPickupRaycast() {
-		//Set Up Ray.
-		RaycastHit hit;
-		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+		if(itemPickedUp == null) {
+			//Set Up Ray.
+			RaycastHit hit;
+			Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-		//Perform Raycast
-		if(Physics.Raycast(ray, out hit)) {
-			//Store the hit object's information.
-			Transform objectHit = hit.transform;
+			//Perform Raycast
+			if (Physics.Raycast(ray, out hit)) {
+				//Store the hit object's information.
+				Transform objectHit = hit.transform;
 
-			//Pick Up the object.
-			if(objectHit.gameObject.tag == "Cube") {
-				//Get the item gameobject and rigidbody. Disable gravity.
-				itemPickedUp = objectHit.gameObject;
-				itemRigidBody = itemPickedUp.GetComponent<Rigidbody>();
-				itemRigidBody.useGravity = false;
+				//Pick Up the object.
+				if (objectHit.gameObject.tag == "Cube") {
+					//Get the item gameobject and rigidbody. Disable gravity.
+					itemPickedUp = objectHit.gameObject;
+					itemRigidBody = itemPickedUp.GetComponent<Rigidbody>();
+					itemRigidBody.useGravity = false;
 
-				//Give the item a random spin.
-				itemRigidBody.angularVelocity = new Vector3(Random.Range(0.0f, maxRandomAngularVelocity), Random.Range(0.0f, maxRandomAngularVelocity), Random.Range(0.0f, maxRandomAngularVelocity));
-			
-				itemPickedUp.GetComponent<BoxCollider>().enabled = false;//I turn off the collider so raycasts can pass through.
-				return true;
+					//Give the item a random spin.
+					itemRigidBody.angularVelocity = new Vector3(Random.Range(0.0f, maxRandomAngularVelocity), Random.Range(0.0f, maxRandomAngularVelocity), Random.Range(0.0f, maxRandomAngularVelocity));
+
+					itemPickedUp.GetComponent<BoxCollider>().enabled = false;//I turn off the collider so raycasts can pass through.
+					return true;
+				}
 			}
 		}
 		return false;

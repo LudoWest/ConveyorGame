@@ -11,10 +11,7 @@ using UnityEngine;
 public class ItemSpawnerScript : MonoBehaviour {
 	#region Variables to assign via the unity inspector (Serialize Fields)
 	[SerializeField]
-	private GameObject itemOne = null;
-
-	[SerializeField]
-	private GameObject itemTwo = null;
+	private ObjectPoolingScript objectPool = null; //Get a reference to the object pooler.
 
 	[SerializeField]
 	[Range(0.5f, 10.0f)]
@@ -62,9 +59,9 @@ public class ItemSpawnerScript : MonoBehaviour {
 	private void SpawnRandomItem() {
 		int randomNumber = Random.Range(0, int.MaxValue);
 		if ((randomNumber % 2) == 0) {
-			Instantiate(itemOne, spawnPos);
+			objectPool.SpawnBolt(spawnPos.position, spawnPos.rotation);
 		} else {
-			Instantiate(itemTwo, spawnPos);
+			objectPool.SpawnNut(spawnPos.position, spawnPos.rotation);
 		}
 	}
 

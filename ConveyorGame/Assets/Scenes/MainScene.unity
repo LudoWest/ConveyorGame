@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 134445689}
   - component: {fileID: 134445690}
+  - component: {fileID: 134445691}
   m_Layer: 0
   m_Name: Item Spawner
   m_TagString: Untagged
@@ -148,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134445688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.53, y: 21.39, z: 36.7}
+  m_LocalPosition: {x: 15.83, y: 15.23, z: 36.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1784737550}
@@ -168,11 +169,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77321dd51c84634bab609eec9ad89ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemOne: {fileID: 3225395049404288483, guid: 2b005cc6aba65474ca0083d9e5fed624, type: 3}
-  itemTwo: {fileID: 4486673458737288994, guid: 3ae10fa3049cd2845a1d6d6002a4a08d, type: 3}
+  objectPool: {fileID: 134445691}
   spawnRate: 2
   posOne: {fileID: 1784737550}
   posTwo: {fileID: 2027909055}
+--- !u!114 &134445691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134445688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b45e575639b09044b4ed97bb274f4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutsPrefab: {fileID: 4486673458737288994, guid: 3ae10fa3049cd2845a1d6d6002a4a08d, type: 3}
+  boltsPrefab: {fileID: 3225395049404288483, guid: 2b005cc6aba65474ca0083d9e5fed624, type: 3}
+  nutsPool: 20
+  boltsPool: 20
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,10 +361,138 @@ Transform:
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -5.89, y: 13.4, z: 37.09999}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1226723237}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
+--- !u!1 &1226723236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226723237}
+  - component: {fileID: 1226723238}
+  m_Layer: 0
+  m_Name: Music Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1226723237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226723236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1226723238
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226723236}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5386637708936183872, guid: e85d5dd9132914546b4f3344bc6676f5, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 05edf89a0a27b684b8fdd96d36ccb823, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0
+  MaxDistance: 2.5
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1285559935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8763833069192268052, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
@@ -522,6 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 581929744027327140}
   - component: {fileID: 581929744027327141}
+  - component: {fileID: 581929744027327143}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -529,6 +674,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &581929744027327143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581929744027327142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8840849b16ba643af5accab680acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 10
 --- !u!1 &919132147960838551
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +751,7 @@ GameObject:
   - component: {fileID: 1617510589819949308}
   - component: {fileID: 3028588008717890702}
   - component: {fileID: 1395320447895753474}
+  - component: {fileID: 1395320447895753475}
   m_Layer: 0
   m_Name: Plane.017
   m_TagString: Untagged
@@ -608,11 +767,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395320447895753473}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.020633025, z: 0}
+  m_Size: {x: 0.02, y: 0.020633025, z: 0.02}
   m_Center: {x: 0, y: -0.000029255167, z: 0}
+--- !u!114 &1395320447895753475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395320447895753473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4920f046ac42faf4c9c218d94debf426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreManager: {fileID: 581929744027327143}
+  nutOrBoltLayer: 0
 --- !u!1 &1585015376821807204
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,8 +1169,9 @@ GameObject:
   - component: {fileID: 5700249662523333381}
   - component: {fileID: 2832818611926900954}
   - component: {fileID: 4210489978219364482}
+  - component: {fileID: 4210489978219364483}
   m_Layer: 0
-  m_Name: Plane.020
+  m_Name: Nuts Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1011,11 +1185,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4210489978219364481}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.020000001, y: 0.020000001, z: 0.0000000011920931}
+  m_Size: {x: 0.020000001, y: 0.020000001, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4210489978219364483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4210489978219364481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4920f046ac42faf4c9c218d94debf426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreManager: {fileID: 581929744027327143}
+  nutOrBoltLayer: 6
 --- !u!23 &4517996882574092899
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1326,8 +1514,9 @@ GameObject:
   - component: {fileID: 2219043075791546715}
   - component: {fileID: 7181012074621572448}
   - component: {fileID: 7242195362889954239}
+  - component: {fileID: 7242195362889954240}
   m_Layer: 0
-  m_Name: Plane.021
+  m_Name: Bolts Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,11 +1530,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242195362889954238}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.019999998, z: 1.4210854e-16}
+  m_Size: {x: 0.02, y: 0.019999998, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7242195362889954240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242195362889954238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4920f046ac42faf4c9c218d94debf426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreManager: {fileID: 581929744027327143}
+  nutOrBoltLayer: 7
 --- !u!23 &7934638894308550718
 MeshRenderer:
   m_ObjectHideFlags: 0

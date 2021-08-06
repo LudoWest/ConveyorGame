@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3364923122011046390}
   - component: {fileID: 1925468927875166069}
   - component: {fileID: 1949885422513422164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4486673458737289005}
   - component: {fileID: 4486673458737289007}
   - component: {fileID: 4486673458737289004}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nut
   m_TagString: Cube
   m_Icon: {fileID: 0}
