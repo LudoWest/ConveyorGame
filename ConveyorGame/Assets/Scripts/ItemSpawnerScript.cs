@@ -22,19 +22,18 @@ public class ItemSpawnerScript : MonoBehaviour {
 
 	[SerializeField]
 	private Transform posTwo = null;
+
+	[SerializeField]
+	private Transform spawnPos = null;
 	#endregion
 
 	#region Private Variable Declarations
 	private bool cooldownOver = true;
-	private bool spawnInPosOne = true;
-
-	private Transform spawnPos = null;
 	#endregion
 
 	#region Private Functions
 	// Start is called before the first frame update
 	void Start() {
-		spawnPos = posOne;
 	}
 
 	// Update is called once per frame
