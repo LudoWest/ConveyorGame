@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 107712344}
   - component: {fileID: 107712346}
   - component: {fileID: 107712345}
+  - component: {fileID: 107712347}
   m_Layer: 5
   m_Name: Score (1)
   m_TagString: Untagged
@@ -151,13 +152,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1469929156}
   m_Father: {fileID: 675252100}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50.370056, y: -80.64}
+  m_AnchoredPosition: {x: 48.9, y: -80.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &107712345
@@ -202,6 +204,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107712343}
   m_CullTransparentMesh: 1
+--- !u!114 &107712347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107712343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55344099e9d32647a353295e206340b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spring: 3.07
+  drag: 0.16
+  altPos: {x: 0, y: 0}
+  altSizeMult: 0
+  changesSize: 0
 --- !u!1 &134445688
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +354,7 @@ GameObject:
   - component: {fileID: 259379892}
   - component: {fileID: 259379891}
   m_Layer: 5
-  m_Name: Heart (1)
+  m_Name: Heart 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +372,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 675252100}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.97}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -428,7 +447,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 675252100}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -565,9 +584,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 929792925}
-  - {fileID: 715639273}
   - {fileID: 107712344}
-  - {fileID: 1469929156}
   - {fileID: 1071211544}
   - {fileID: 259379890}
   - {fileID: 1973550554}
@@ -698,16 +715,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715639272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 675252100}
-  m_RootOrder: 1
+  m_Father: {fileID: 929792925}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -62.669983, y: -77.56}
+  m_AnchoredPosition: {x: -1.670002, y: 2.3399963}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &715639274
@@ -780,7 +797,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 715639273}
   m_Father: {fileID: 675252100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -927,7 +945,7 @@ GameObject:
   - component: {fileID: 1071211546}
   - component: {fileID: 1071211545}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: Heart 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,7 +963,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 675252100}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1230,16 +1248,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469929155}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 675252100}
-  m_RootOrder: 3
+  m_Father: {fileID: 107712344}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 48.7, y: -78.3}
+  m_AnchoredPosition: {x: -1.6699867, y: 2.3400116}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1469929157
@@ -1337,6 +1355,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624158460}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1743308433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4447745868904778961, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
+  m_PrefabInstance: {fileID: 4822067065438221659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb63de25b64ee946863a2850ca2d52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1784737549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1527,7 @@ GameObject:
   - component: {fileID: 1973550556}
   - component: {fileID: 1973550555}
   m_Layer: 5
-  m_Name: Heart (2)
+  m_Name: Heart 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,7 +1545,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 675252100}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.77}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1680,7 +1709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8840849b16ba643af5accab680acae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 10
+  lives: 3
+  scoreText: {fileID: 107712345}
+  conveyor: {fileID: 1743308433}
 --- !u!1 &919132147960838551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2325,10 @@ PrefabInstance:
     - target: {fileID: 4447745868904778961, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
       propertyPath: speed
       value: 0.2222222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447745868904778961, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
+      propertyPath: speedIncrease
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 5751477181469671640, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
       propertyPath: m_Materials.Array.data[0]

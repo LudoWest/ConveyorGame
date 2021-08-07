@@ -9,6 +9,8 @@ public class ConveyorScript : MonoBehaviour {
 
 	[SerializeField]
 	private float speed = 10.0f;
+	[SerializeField]
+	private float speedIncrease = 1.01f;
 	#endregion
 
 	#region Variable Declarations
@@ -33,6 +35,9 @@ public class ConveyorScript : MonoBehaviour {
 	#endregion
 
 	#region Public Access Functions (Getters and Setters)
-
+	public void SpeedUp()
+    {
+		speed *= speedIncrease;
+    }
 	#endregion
 }
