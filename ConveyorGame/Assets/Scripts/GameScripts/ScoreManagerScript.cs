@@ -56,7 +56,7 @@ public class ScoreManagerScript : MonoBehaviour {
 	void Update() {
 		if (lives <= 0) {
 			gameOver = true;
-			SceneManager.LoadScene(0);
+			ReturnToMainMenu();
 		}
 	}
 
@@ -67,6 +67,13 @@ public class ScoreManagerScript : MonoBehaviour {
 			heart2.color = transparentWhite;
 		} else if (lives == 0) {
 			heart1.color = transparentWhite;
+		}
+	}
+
+	private void UpdateHighScore() {
+		int highScore = PlayerPrefs.GetInt("HighScore");
+		if(highScore < score) {
+			PlayerPrefs.SetInt("HighScore", score);
 		}
 	}
 	#endregion
@@ -90,6 +97,14 @@ public class ScoreManagerScript : MonoBehaviour {
 		lives--;
 		UpdateHeartContainers();
 		Debug.Log("Current Lives: " + lives);
+	}
+
+	/// <summary>
+	/// Function is used to update the high score then loads the main menu scene.
+	/// </summary>
+	public void ReturnToMainMenu() {
+		UpdateHighScore();
+		SceneManager.LoadScene(0);
 	}
 	#endregion
 }
