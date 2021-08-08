@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManagerScript : MonoBehaviour {
 	#region Variables to assign via the unity inspector (Serialize Fields).
@@ -17,6 +18,15 @@ public class ScoreManagerScript : MonoBehaviour {
 	private Text scoreText = null;
 	[SerializeField]
 	private ConveyorScript conveyor = null;
+
+	[SerializeField]
+	private Image heart1 = null;
+
+	[SerializeField]
+	private Image heart2 = null;
+
+	[SerializeField]
+	private Image heart3 = null;
 	#endregion
 
 	#region Private Variable Declarations.
@@ -24,6 +34,7 @@ public class ScoreManagerScript : MonoBehaviour {
 	private GameObject scoreObject;
 	private Text scoreText2 = null;
 	private bool gameOver = false;
+	private Color transparentWhite = Color.white;
 	#endregion
 
 	#region Private Functions.
@@ -31,14 +42,31 @@ public class ScoreManagerScript : MonoBehaviour {
 	void Start() {
 		scoreText2 = scoreText.gameObject.transform.GetChild(0).GetComponent<Text>();
 		scoreObject = scoreText.gameObject;
+
+		//Make transparentWhite 0.5f alpha.
+		transparentWhite.a = 0.5f;
+
+		//Set all hearts to red.
+		heart1.color = Color.red;
+		heart2.color = Color.red;
+		heart3.color = Color.red;
 	}
 
 	// Update is called once per frame
 	void Update() {
-		if(lives <= 0) {
+		if (lives <= 0) {
 			gameOver = true;
-			Debug.Log("Game Over");
-			Application.Quit();
+			SceneManager.LoadScene(0);
+		}
+	}
+
+	private void UpdateHeartContainers() {
+		if (lives == 2) {
+			heart3.color = transparentWhite;
+		} else if (lives == 1) {
+			heart2.color = transparentWhite;
+		} else if (lives == 0) {
+			heart1.color = transparentWhite;
 		}
 	}
 	#endregion
@@ -48,7 +76,7 @@ public class ScoreManagerScript : MonoBehaviour {
 	/// Increments the score tally.
 	/// </summary>
 	/// <param name="scoreChange"></param>
-	public void IncrementScore( ) {
+	public void IncrementScore() {
 		score++;
 		scoreText.text = score.ToString();
 		scoreText2.text = score.ToString();
@@ -60,6 +88,7 @@ public class ScoreManagerScript : MonoBehaviour {
 
 	public void DecrementLives() {
 		lives--;
+		UpdateHeartContainers();
 		Debug.Log("Current Lives: " + lives);
 	}
 	#endregion
