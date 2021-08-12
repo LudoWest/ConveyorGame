@@ -23,6 +23,9 @@ public class MainMenuScript : MonoBehaviour {
 	#region Private Functions.
 	// Start is called before the first frame update
 	void Start() {
+		//Make sure the time scale is 1.
+		Time.timeScale = 1.0f;
+
 		//Check for the high score and get the high score.
 		if (!PlayerPrefs.HasKey("HighScore")) {
 			PlayerPrefs.SetInt("HighScore", 0);
