@@ -27,6 +27,9 @@ public class ScoreManagerScript : MonoBehaviour {
 
 	[SerializeField]
 	private Image heart3 = null;
+
+	[SerializeField]
+	private Image hurtPanel = null;
 	#endregion
 
 	#region Private Variable Declarations.
@@ -35,6 +38,8 @@ public class ScoreManagerScript : MonoBehaviour {
 	private Text scoreText2 = null;
 	private bool gameOver = false;
 	private Color transparentWhite = Color.white;
+	private float hurtPanelValue = 0.0f;
+	private Color tempColour = Color.white;
 	#endregion
 
 	#region Private Functions.
@@ -45,6 +50,8 @@ public class ScoreManagerScript : MonoBehaviour {
 
 		//Make transparentWhite 0.5f alpha.
 		transparentWhite.a = 0.5f;
+		//Set temporary hurtpanel colour to alter
+		tempColour = hurtPanel.color;
 
 		//Set all hearts to red.
 		heart1.color = Color.red;
@@ -58,15 +65,26 @@ public class ScoreManagerScript : MonoBehaviour {
 			gameOver = true;
 			ReturnToMainMenu();
 		}
+		if(hurtPanelValue > 0.0f){
+			hurtPanelValue -= 0.5f * Time.deltaTime;
+			tempColour.a = hurtPanelValue;
+			hurtPanel.color = tempColour;
+        }
 	}
 
 	private void UpdateHeartContainers() {
 		if (lives == 2) {
 			heart3.color = transparentWhite;
+			hurtPanelValue = 0.5f;
+			heart3.GetComponent<SpringDynamics>().React(0.5f);
 		} else if (lives == 1) {
 			heart2.color = transparentWhite;
+			hurtPanelValue = 0.5f;
+			heart2.GetComponent<SpringDynamics>().React(0.5f);
 		} else if (lives == 0) {
 			heart1.color = transparentWhite;
+			hurtPanelValue = 0.5f;
+			heart1.GetComponent<SpringDynamics>().React(0.5f);
 		}
 	}
 

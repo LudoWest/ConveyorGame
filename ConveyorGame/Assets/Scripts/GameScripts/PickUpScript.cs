@@ -51,6 +51,7 @@ public class PickUpScript : MonoBehaviour {
 					itemPickedUp = null;
 					itemRigidBody.useGravity = true;
 					itemRigidBody.velocity = velocity * 0.5f;
+					velocity = Vector3.zero;
 					itemRigidBody = null;
 				}
 			}
