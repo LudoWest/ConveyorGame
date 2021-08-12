@@ -27,6 +27,8 @@ public class PauseScript : MonoBehaviour {
 	void Update() {
 
 	}
+
+
 	#endregion
 
 	#region Public Access Functions (Getters and Setters).
