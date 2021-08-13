@@ -40,6 +40,7 @@ public class ScoreManagerScript : MonoBehaviour {
 	private Color transparentWhite = Color.white;
 	private float hurtPanelValue = 0.0f;
 	private Color tempColour = Color.white;
+	private Camera mainCamera = null;
 	#endregion
 
 	#region Private Functions.
@@ -47,6 +48,7 @@ public class ScoreManagerScript : MonoBehaviour {
 	void Start() {
 		scoreText2 = scoreText.gameObject.transform.GetChild(0).GetComponent<Text>();
 		scoreObject = scoreText.gameObject;
+		mainCamera = Camera.main;
 
 		//Make transparentWhite 0.5f alpha.
 		transparentWhite.a = 0.5f;
@@ -73,17 +75,16 @@ public class ScoreManagerScript : MonoBehaviour {
 	}
 
 	private void UpdateHeartContainers() {
+		hurtPanelValue = 0.5f;
+		mainCamera.GetComponent<CameraScript>().CameraShake(0.5f);
 		if (lives == 2) {
 			heart3.color = transparentWhite;
-			hurtPanelValue = 0.5f;
 			heart3.GetComponent<SpringDynamics>().React(0.5f);
 		} else if (lives == 1) {
 			heart2.color = transparentWhite;
-			hurtPanelValue = 0.5f;
 			heart2.GetComponent<SpringDynamics>().React(0.5f);
 		} else if (lives == 0) {
 			heart1.color = transparentWhite;
-			hurtPanelValue = 0.5f;
 			heart1.GetComponent<SpringDynamics>().React(0.5f);
 		}
 	}

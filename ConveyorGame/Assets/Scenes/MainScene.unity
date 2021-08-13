@@ -1031,6 +1031,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1104,6 +1105,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8292fdb820ee2bf49a061c62da8646b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traumaRate: 0.01
+  shakeFrequency: 5
+  maxAngle: 6
 --- !u!1 &993107513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,6 +3236,10 @@ PrefabInstance:
       propertyPath: speedIncrease
       value: 1.01
       objectReference: {fileID: 0}
+    - target: {fileID: 4447745868904778961, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
+      propertyPath: conveyorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 593cb6f31aa994a4f806b04c525b238b, type: 2}
     - target: {fileID: 5751477181469671640, guid: 71e15786a229e8a419c9d86f5d02270a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

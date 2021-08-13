@@ -11,12 +11,15 @@ public class ConveyorScript : MonoBehaviour {
 	private float speed = 10.0f;
 	[SerializeField]
 	private float speedIncrease = 1.01f;
+	[SerializeField]
+	private Material conveyorMaterial = null;
 	#endregion
 
 	#region Variable Declarations
 	private Rigidbody rBody = null;
 
 	private Vector3 back = Vector3.back;
+	private float conveyorOffset = 0.0f;
 	#endregion
 
 	#region Private Functions
@@ -27,10 +30,15 @@ public class ConveyorScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate() {
+		//Conveyor movement
 		Vector3 pos = rBody.position;
 		back = -(directionToMoveInObject.transform.position - pos);
 		rBody.position += back * speed * Time.fixedDeltaTime;
 		rBody.MovePosition(pos);
+
+		//Conveyor material scrolling
+		conveyorOffset -= speed * Time.deltaTime;
+		conveyorMaterial.SetTextureOffset("_MainTex", new Vector2(0.0f, conveyorOffset));
 	}
 	#endregion
 
