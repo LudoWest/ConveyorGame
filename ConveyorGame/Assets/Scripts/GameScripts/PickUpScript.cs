@@ -39,31 +39,29 @@ public class PickUpScript : MonoBehaviour {
 		//If the user clicks.
 		if (Input.GetMouseButtonDown(0)) {
 			//Check for a pickup.
-			if (AttemptItemPickupRaycast() ) {
+			if (AttemptItemPickupRaycast()) {
 				//Do nothing.
-			} else {
-				//If no pickup detected release cube.
-				if(itemPickedUp != null) {
-					//Make it collide again.
-					itemPickedUp.GetComponent<BoxCollider>().enabled = true;
+			}
+		} else if (Input.GetMouseButtonUp(0)) {
+			//If no pickup detected release cube.
+			if (itemPickedUp != null) {
+				//Make it collide again.
+				itemPickedUp.GetComponent<BoxCollider>().enabled = true;
 
-					//Unset item parameters and re-enable gravity
-					itemPickedUp = null;
-					itemRigidBody.useGravity = true;
-					itemRigidBody.velocity = velocity * 0.5f;
-					velocity = Vector3.zero;
-					itemRigidBody = null;
-				}
+				//Unset item parameters and re-enable gravity
+				itemPickedUp = null;
+				itemRigidBody.useGravity = true;
+				itemRigidBody.velocity = velocity * 0.5f;
+				velocity = Vector3.zero;
+				itemRigidBody = null;
 			}
 		}
 
 	}
 
-    private void FixedUpdate()
-    {
+	private void FixedUpdate() {
 		//If there's an item that's picked up.
-		if (itemPickedUp != null)
-		{
+		if (itemPickedUp != null) {
 			//Move item towards where it should be.
 			velocity += (targetPos - itemPickedUp.transform.position) * spring;
 			velocity -= velocity * drag;
@@ -75,13 +73,13 @@ public class PickUpScript : MonoBehaviour {
 		}
 	}
 
-    /// <summary>
-    /// Checks if there's an item that the user wants to picked up and if yes it returns true and picks it up.
+	/// <summary>
+	/// Checks if there's an item that the user wants to picked up and if yes it returns true and picks it up.
 	/// If an item is already picked up return false.
-    /// </summary>
-    /// <returns></returns>
-    private bool AttemptItemPickupRaycast() {
-		if(itemPickedUp == null) {
+	/// </summary>
+	/// <returns></returns>
+	private bool AttemptItemPickupRaycast() {
+		if (itemPickedUp == null) {
 			//Set Up Ray.
 			RaycastHit hit;
 			Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -119,7 +117,7 @@ public class PickUpScript : MonoBehaviour {
 		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
 		//Perform Raycast.
-		if(Physics.Raycast(ray, out hit)) {
+		if (Physics.Raycast(ray, out hit)) {
 			//Return the hitpoint.
 			return new Vector3(hit.point.x, targetHeight, hit.point.z);
 		}
